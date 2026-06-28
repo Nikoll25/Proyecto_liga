@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\goal;
+use App\Models\Player;
+use App\Models\Game;
 class GoalController extends Controller
 {
-    public function pruebas()
-{
-    $goal = goal::find(2);
+      public function create(){
 
-    return [
-        'goal' => $goal,
-        'game' => $goal->game,
-        'player' => $goal->player
-    ];
-}
+        $players=Player::all();
+        $games=Game::all();
+        return view('goal.create',compact('players','games'));
+
+    }
+
+    public function store(Request $request){
+
+     Goal::create($request->all());
+    }
 }

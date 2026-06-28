@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class player extends Model
 {
     use HasFactory;
+
+      protected $fillable = [
+        'name',
+        'position',
+        'team_id',
+    ];
      //Relación uno a muchos, creo una función que apunte a goal
       public function goals(){
         return $this->hasMany('App\Models\goal');

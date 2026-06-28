@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class team extends Model
 {
     use HasFactory;
+
+      protected $fillable = [
+        'name',
+        'city',
+        'stadium',
+        'capacity',
+        'year_of_foundation',
+        'president_id',
+    ];
      //Relación uno a uno, creo una función que apunte a president
       public function president(){
         return $this->belongsTo('App\Models\president');

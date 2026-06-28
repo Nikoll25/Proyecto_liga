@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\team;
+use App\Models\president;
 class TeamController extends Controller
 {
-    public function pruebas()
-{
-    $team = team::find(5);
+      public function create(){
 
-    return [
-        'team' => $team,
-        'president' => $team->president,
-        'players' => $team->players,
-        'games' => $team->games
-    ];
-}
+        $presidents=President::all();
+        return view('Team.create',compact('presidents'));
+
+    }
+
+    public function store(Request $request){
+
+     Team::create($request->all());
+    }
 }

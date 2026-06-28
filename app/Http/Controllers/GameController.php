@@ -7,14 +7,19 @@ use App\Models\game;
 
 class GameController extends Controller
 {
-     public function pruebas()
+    public function create(){
+        return view('Game.create');
+    }
+public function store(Request $request)
 {
-    $game = game::find(1);
+    $game = new Game();
 
-    return [
-        'game' => $game,
-        'goals' => $game->goals,
-        'teams' => $game->teams
-    ];
+    $game->date = $request->date;
+    $game->local_goals = $request->local_goals;
+    $game->away_goals = $request->away_goals;
+
+    $game->save();
+
+    return $game;
 }
 }

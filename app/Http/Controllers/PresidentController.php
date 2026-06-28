@@ -6,13 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\president;
 class PresidentController extends Controller
 {
-    public function pruebas()
+        public function create(){
+        return view('President.create');
+    }
+public function store(Request $request)
 {
-    $president = president::find(4);
+    $president = new President();
 
-    return [
-        'president' => $president,
-        'team' => $president->team
-    ];
+    $president->name = $request->name;
+    $president->year = $request->year;
+
+    $president->save();
+
+    return $president;
 }
 }
